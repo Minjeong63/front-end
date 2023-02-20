@@ -6,29 +6,29 @@
 expo init reactnative_memolist 를 입력하면
 해당 위치에 reractnative_memolist 폴더가 생성됨 (blank - typescript로 생성)
 
-### Button Component (Touchable)
+## Button Component (Touchable)
 
-##### TouchableOpacity
+### TouchableOpacity
 
 누르는 이벤트를 listen할 준비가 된 view라고 할 수 있음, opacity가 있는 이유는 눌렀을 때 애니메이션 효과가 있기 때문
 
-##### TouchableHighlight
+### TouchableHighlight
 
 - TouchableOpacity보다 더 많은 속성을 가짐, 내가 요소를 클릭했을 때 배경색이 바뀌도록 해줌
 - onPress는 유저가 Touchable을 눌렀을 때 실행되는 이벤트를 말함
 - underlayColor를 지정해야 버튼을 눌렀을 때 색깔이 보임
 
-##### TouchableWithoutFeedback
+### TouchableWithoutFeedback
 
 - 화면의 가장 위에서 일어나는 탭 이벤트를 listen 하는 것
 - 하지만 그래픽이나 다른 UI 반응은 보여주지 않음
 
-##### Pressable
+### Pressable
 
 - TouchableWithoutFeedback이랑 비슷함
 - 추가적인 옵션을 더 가지고 있어서 좀 더 섬세한 설정이 가능
 
-### TextInput
+## TextInput
 
 - keyboardType : 키보드 타입 지정
 - onChangeText : text가 바꼈는지 확인하는 함수
