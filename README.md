@@ -1,5 +1,7 @@
 # React Native - MemoList (여행)
 
+- Work와 Travel 탭을 만든 다음 탭에 해당하는 항목을 추가한 후 목록을 확인할 수 있는 앱
+
 ## 개발환경 설정
 
 터미널을 켜서 폴더를 생성하고 싶은 위치로 이동한 후
@@ -36,3 +38,16 @@ expo init reactnative_memolist 를 입력하면
 - secureTextEntry : 비밀번호에 input에 사용
 - multiline : 메모장 같이 여러줄을 입력할 때 사용
 - placeholderTextColor : placeholder text 색깔 바꿀 수 있음
+
+## AsyncStorage
+
+설치하기 위해서
+expo install @react-native-async-storage/async-storage
+
+- 브라우저의 local storage처럼 작동함
+- async await을 사용해야 함
+
+## expo
+
+expo install을 사용하면 npm install과 똑같이 작동함
+하지만 expo install을 사용하면 현재 사용중인 expo버전과 같은 버전의 모듈을 설치해줌

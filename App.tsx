@@ -1,36 +1,74 @@
 import { StatusBar } from "expo-status-bar";
 import {
-  Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   View,
 } from "react-native";
 import { theme } from "./colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+/**
+ * asyncstorage key값
+ */
+const STORAGE_KEY = "@toDos";
 
 export default function App() {
   const [working, setWorking] = useState<boolean>(true);
   const [text, setText] = useState<string>("");
-  const [toDos, setToDos] = useState<Object>({});
+  const [toDos, setToDos] = useState<any>({});
 
   const travel = () => setWorking(false);
   const work = () => setWorking(true);
   const onChangeText = (payload: string) => setText(payload);
-  const addToDo = () => {
+
+  useEffect(() => {
+    loadToDos();
+  }, []);
+
+  /**
+   * asyncstorage에 데이터 저장하는 함수
+   * @param toSave 저장할 데이터
+   */
+  const saveToDos = async (toSave: any) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(toSave));
+    } catch (e) {
+      alert("storage 저장 실패");
+    }
+  };
+
+  /**
+   * asyncstorage에 있는 데이터 불러오는 함수
+   */
+  const loadToDos = async () => {
+    try {
+      const data = await AsyncStorage.getItem(STORAGE_KEY);
+      data ? setToDos(JSON.parse(data)) : null;
+    } catch (e) {
+      alert("storage 불러오기 실패");
+    }
+  };
+
+  /**
+   * 할 일 추가하는 함수
+   * @returns
+   */
+  const addToDo = async () => {
     if (!text) return;
     else {
-      const newToDos = Object.assign({}, toDos, {
-        [Date.now()]: { text, work: working },
-      });
+      // const newToDos = Object.assign({}, toDos, {
+      //   [Date.now()]: { text, work: working },
+      // });
+      const newToDos = { ...toDos, [Date.now()]: { text, working } };
       setToDos(newToDos);
+      await saveToDos(newToDos);
       setText("");
     }
   };
-  console.log(toDos);
 
   return (
     <View style={styles.container}>
@@ -62,6 +100,17 @@ export default function App() {
         placeholder={working ? "할 일을 추가해 보세요." : "어디로 가고 싶나요?"}
         style={styles.input}
       />
+      <ScrollView>
+        {toDos &&
+          Object.keys(toDos).map(
+            (key: string) =>
+              toDos[key].working === working && (
+                <View style={styles.toDo} key={key}>
+                  <Text style={styles.toDoText}>{toDos[key]["text"]}</Text>
+                </View>
+              )
+          )}
+      </ScrollView>
     </View>
   );
 }
@@ -86,7 +135,14 @@ const styles = StyleSheet.create({
     paddingVertical: 15,
     paddingHorizontal: 10,
     borderRadius: 8,
-    marginTop: 20,
+    marginVertical: 20,
     fontSize: 18,
   },
+  toDo: {
+    backgroundColor: theme.grey,
+    marginBottom: 12,
+    padding: 16,
+    borderRadius: 4,
+  },
+  toDoText: { color: "white", fontSize: 16, fontWeight: "500" },
 });
