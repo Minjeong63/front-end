@@ -47,7 +47,25 @@ expo install @react-native-async-storage/async-storage
 - 브라우저의 local storage처럼 작동함
 - async await을 사용해야 함
 
+## Alert
+
+- 대화창을 실행시킴
+- 옵션으로 alert()와 prompt()가 있는데 prompt()는 ios에서만 사용 가능
+
 ## expo
 
 expo install을 사용하면 npm install과 똑같이 작동함
 하지만 expo install을 사용하면 현재 사용중인 expo버전과 같은 버전의 모듈을 설치해줌
+
+icons.expo.fyi 에서 예쁜 아이콘 찾을 수 있음
+
+/**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***/
+
+# 추가로 개인 개발
+
+## Navigating
+
+- 여러 화면의 표시 및 전환 관리는 일반적으로 네비게이터라고 하는 것으로 처리됨
+
+먼저, npm install @react-navigation/native @react-navigation/native-stack으로 설치
+Expo project인 경우, npx expo install react-native-screens react-native-safe-area-context를 통해 종속성을 설치
