@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import {
   Alert,
   ScrollView,
@@ -13,6 +12,8 @@ import { useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Fontisto } from "@expo/vector-icons";
 import { tInputTheme } from "./style/textInput";
+import { Feather } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 /**
  * asyncstorage key값
@@ -23,14 +24,36 @@ export default function ToDoList() {
   const [working, setWorking] = useState<boolean>(true);
   const [text, setText] = useState<string>("");
   const [toDos, setToDos] = useState<any>({});
+  const [isChecked, setIsChecked] = useState<any>({});
 
-  const travel = () => setWorking(false);
-  const work = () => setWorking(true);
+  const travel = async () => {
+    setWorking(false);
+    await AsyncStorage.setItem("tab", "false");
+  };
+
+  const work = async () => {
+    setWorking(true);
+    await AsyncStorage.setItem("tab", "true");
+  };
+
   const onChangeText = (payload: string) => setText(payload);
 
   useEffect(() => {
     loadToDos();
+    lastTab();
   }, []);
+
+  /**
+   * app을 끄기 직전에 보고 있던 tab이 뭔지 구분해서 다음에 다시 app을 들어갈 때 그 탭을 보여주는 함수
+   */
+  const lastTab = async () => {
+    try {
+      const tab = await AsyncStorage.getItem("tab");
+      setWorking(tab === "true" ? true : false);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   /**
    * asyncstorage에 데이터 저장하는 함수
@@ -140,7 +163,22 @@ export default function ToDoList() {
             (key: string) =>
               toDos[key].working === working && (
                 <View style={styles.toDo} key={key}>
-                  <Text style={styles.toDoText}>{toDos[key]["text"]}</Text>
+                  <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <TouchableOpacity
+                      onPress={() => setIsChecked(!isChecked[key])}
+                    >
+                      {isChecked ? (
+                        <FontAwesome
+                          name="check-square-o"
+                          size={24}
+                          color="white"
+                        />
+                      ) : (
+                        <Feather name="square" size={24} color="white" />
+                      )}
+                    </TouchableOpacity>
+                    <Text style={styles.toDoText}>{toDos[key]["text"]}</Text>
+                  </View>
                   <TouchableOpacity onPress={() => deleteToDo(key)}>
                     <Fontisto name="trash" size={24} color="white" />
                   </TouchableOpacity>
@@ -180,5 +218,5 @@ const styles = StyleSheet.create({
     padding: 16,
     borderRadius: 4,
   },
-  toDoText: { color: "white", fontSize: 16, fontWeight: "500" },
+  toDoText: { color: "white", fontSize: 16, fontWeight: "500", marginLeft: 12 },
 });
