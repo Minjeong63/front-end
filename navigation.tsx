@@ -1,7 +1,7 @@
 import { NavigationContainer, StackActions } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import ToDoList from "./toDoList";
-import SignIn from "./signIn";
+import ToDoList from "./screens/toDoList";
+import SignIn from "./screens/signIn";
 
 const Stack = createNativeStackNavigator();
 

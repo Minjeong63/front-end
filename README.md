@@ -1,6 +1,7 @@
 # React Native - MemoList (여행)
 
 - Work와 Travel 탭을 만든 다음 탭에 해당하는 항목을 추가한 후 목록을 확인할 수 있는 앱
+- 할 일 추가, 수정, 완료, 삭제 기능 구현
 
 ## 개발환경 설정
 
@@ -59,8 +60,6 @@ expo install을 사용하면 npm install과 똑같이 작동함
 
 icons.expo.fyi 에서 예쁜 아이콘 찾을 수 있음
 
-/**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***/
-
 # 추가로 개인 개발
 
 ## Navigating
@@ -69,3 +68,28 @@ icons.expo.fyi 에서 예쁜 아이콘 찾을 수 있음
 
 먼저, npm install @react-navigation/native @react-navigation/native-stack으로 설치
 Expo project인 경우, npx expo install react-native-screens react-native-safe-area-context를 통해 종속성을 설치
+
+## 배포
+
+expo publish
+
+/**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***/
+
+## nativewind
+
+- tailwind랑 사용방법 똑같음
+
+### 1. 설치
+
+npm install nativewind
+npm install --dev tailwindcss
+
+### 2. Setup Tailwind CSS
+
+npx tailwindcss init을 실행하여 tailwind.config.js 생성
+컴포넌트 파일이 위치한 path를 tailwind.config.js 파일에 추가하기
+
+### 3. ADD the Babel plugin
+
+babel.config.js 파일 수정하기 (아래 코드 추가)
+plugins: ["nativewind/babel"]

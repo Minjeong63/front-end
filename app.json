@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "reactnative_memolist",
-    "slug": "reactnative_memolist",
+    "slug": "todolist",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.minjeong63.todolist"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,6 +29,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "26da487a-3255-4839-a23a-047bf5167d67"
+      }
+    },
+    "owner": "minjeong63"
   }
 }
