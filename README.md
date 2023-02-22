@@ -74,9 +74,7 @@ Expo project인 경우, <pre><code>npx expo install react-native-screens react-n
 
 ## 배포
 
-expo publish
-
-/**\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\*\*\***/
+<pre><code>expo publish</code></pre>
 
 ## nativewind
 
@@ -84,12 +82,15 @@ expo publish
 
 ### 1. 설치
 
+<pre><code>
 npm install nativewind
 npm install --dev tailwindcss
+</code></pre>
 
 ### 2. Setup Tailwind CSS
 
-npx tailwindcss init을 실행하여 tailwind.config.js 생성
+<pre><code>npx tailwindcss init</code></pre>을 실행하여 tailwind.config.js 생성
+
 컴포넌트 파일이 위치한 path를 tailwind.config.js 파일에 추가하기
 
 ### 3. ADD the Babel plugin
