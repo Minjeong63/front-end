@@ -6,7 +6,9 @@
 ## 개발환경 설정
 
 터미널을 켜서 폴더를 생성하고 싶은 위치로 이동한 후
-expo init reactnative_memolist 를 입력하면
+
+<pre><code>expo init reactnative_memolist</code></pre> 를 입력하면
+
 해당 위치에 reractnative_memolist 폴더가 생성됨 (blank - typescript로 생성)
 
 ## Button Component (Touchable)
@@ -43,7 +45,8 @@ expo init reactnative_memolist 를 입력하면
 ## AsyncStorage
 
 설치하기 위해서
-expo install @react-native-async-storage/async-storage
+
+<pre><code>expo install @react-native-async-storage/async-storage</code></pre>
 
 - 브라우저의 local storage처럼 작동함
 - async await을 사용해야 함
@@ -66,8 +69,8 @@ icons.expo.fyi 에서 예쁜 아이콘 찾을 수 있음
 
 - 여러 화면의 표시 및 전환 관리는 일반적으로 네비게이터라고 하는 것으로 처리됨
 
-먼저, npm install @react-navigation/native @react-navigation/native-stack으로 설치
-Expo project인 경우, npx expo install react-native-screens react-native-safe-area-context를 통해 종속성을 설치
+먼저, <pre><code>npm install @react-navigation/native @react-navigation/native-stack</code></pre>으로 설치
+Expo project인 경우, <pre><code>npx expo install react-native-screens react-native-safe-area-context</code></pre>를 통해 종속성을 설치
 
 ## 배포
 
