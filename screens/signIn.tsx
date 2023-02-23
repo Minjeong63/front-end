@@ -1,6 +1,13 @@
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
+import { WebView } from "react-native-webview";
+import axios from "axios";
+import qs from "qs";
+
+const REST_API_KEY = "5dc50ab226c6121b6d5984501f093ece";
+const REDIRECT_URI = "http://192.168.0.8:19003/oauth/kakao";
+const INJECTED_JAVASCRIPT = `window.ReactNativeWebView.postMessage('카카오 로그인')`;
 
 const SignIn = ({ navigation }: any) => {
   const [id, setId] = useState<string>("");
@@ -33,8 +40,8 @@ const SignIn = ({ navigation }: any) => {
           <Text className="text-white text-3xl font-bold">로그인</Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.navigate("kakaoLogin")}
           className="mt-4 mx-8 p-4 bg-neutral-800 rounded-lg items-center mb-8"
-          onPress={() => navigation.navigate("toDoList")}
         >
           <Text className="text-white text-3xl font-bold">회원가입</Text>
         </TouchableOpacity>
