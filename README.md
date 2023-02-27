@@ -2,6 +2,7 @@
 
 - Work와 Travel 탭을 만든 다음 탭에 해당하는 항목을 추가한 후 목록을 확인할 수 있는 앱
 - 할 일 추가, 수정, 완료, 삭제 기능 구현
+- 카카오 소셜로그인 구현
 
 ## 개발환경 설정
 
@@ -97,3 +98,24 @@ npm install --dev tailwindcss
 
 babel.config.js 파일 수정하기 (아래 코드 추가)
 plugins: ["nativewind/babel"]
+
+## kakaoLogin
+
+- native 환경에서는 sdk를 이용해서 구현하는데 expo 환경에서는 불가능하므로 웹뷰를 띄워서 rest API를 이용해서 구현하기
+
+### WebView의 중요 props 3가지 (source, onMessage, injectedJavaScript)
+
+- passport-kakao를 이용할 때는 source props만 있으면 됨
+
+#### source
+
+- WebView를 보여줄 페이지 주소
+- 기본적으로 url이 주어지고 rest API와 redirect uri부분만 값을 넣어주면 됨
+
+#### onMessage
+
+- WebView에서 window.ReactNativeWebView.postMessage 함수가 호출될 때 실행되는 이벤트 함수
+
+#### injectedJavaScript
+
+- WebView에서 window.ReactNativeWebView.postMessage(code)라는 매서드를 강제로 실행시키는 역할을 수행함

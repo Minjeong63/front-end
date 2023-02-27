@@ -37,13 +37,13 @@ const SignIn = ({ navigation }: any) => {
           className="mt-4 mx-8 p-4 bg-neutral-800 rounded-lg items-center"
           onPress={() => navigation.navigate("toDoList")}
         >
-          <Text className="text-white text-3xl font-bold">로그인</Text>
+          <Text className="text-white text-2xl font-bold">로그인</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => navigation.navigate("kakaoLogin")}
           className="mt-4 mx-8 p-4 bg-neutral-800 rounded-lg items-center mb-8"
         >
-          <Text className="text-white text-3xl font-bold">회원가입</Text>
+          <Text className="text-white text-2xl font-bold">카카오 로그인</Text>
         </TouchableOpacity>
       </View>
     </View>
