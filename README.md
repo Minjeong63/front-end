@@ -119,3 +119,16 @@ plugins: ["nativewind/babel"]
 #### injectedJavaScript
 
 - WebView에서 window.ReactNativeWebView.postMessage(code)라는 매서드를 강제로 실행시키는 역할을 수행함
+
+## Linking
+
+### 설치
+
+<pre><code>
+expo install expo-linking
+</code></pre>
+
+### useURL()
+
+- 앱이 시작한 후에 Linking.useURL()로 링크를 관찰할 수 있음
+- 초기 url과 url에 대한 후속 변경 사항을 반환함

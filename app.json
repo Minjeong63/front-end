@@ -14,9 +14,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.minjeong63.todolist"
@@ -35,6 +33,7 @@
         "projectId": "26da487a-3255-4839-a23a-047bf5167d67"
       }
     },
-    "owner": "minjeong63"
+    "owner": "minjeong63",
+    "scheme": "exp"
   }
 }
